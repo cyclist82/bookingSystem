@@ -1,3 +1,4 @@
+@import "~src/styles/variables";
 
 a {
   &:hover, &:focus {
@@ -19,14 +20,13 @@ a {
       font-weight: 500;
       font-size: 12px;
       text-transform: uppercase;
-      color: #16861a;
     }
 
 
     .card-title {
       font-size: 19px;
       margin: 3px 0;
-      color: black;
+      color: $main-text-color;
     }
 
 
