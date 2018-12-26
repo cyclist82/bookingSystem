@@ -41,4 +41,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/server/config/dev.js
+src/server/config/dev.js
