@@ -9,6 +9,7 @@ import {RentalDetailComponent} from './rental-detail/rental-detail.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgPipesModule} from 'ngx-pipes';
 import {UppercPipe} from '../common/pipes/upperc.pipe';
+import {MapModule} from '../common/map/map.module';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import {UppercPipe} from '../common/pipes/upperc.pipe';
         RentalRoutingModule,
         HttpClientModule,
         NgPipesModule,
+        MapModule,
     ],
     providers: [
         RentalService
