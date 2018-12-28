@@ -41,4 +41,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#Server Config
 src/server/config/dev.js
+
+google Maps API Key
+src/app/common/map/config/dev.ts
