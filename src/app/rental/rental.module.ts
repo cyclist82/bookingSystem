@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgPipesModule} from 'ngx-pipes';
 import {UppercPipe} from '../common/pipes/upperc.pipe';
 import {MapModule} from '../common/map/map.module';
+import {Daterangepicker} from 'ng2-daterangepicker';
+import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component';
 
 @NgModule({
     declarations: [
@@ -17,13 +19,15 @@ import {MapModule} from '../common/map/map.module';
         RentalListItemComponent,
         RentalComponent,
         RentalDetailComponent,
-        UppercPipe],
+        UppercPipe,
+        RentalDetailBookingComponent],
     imports: [
         CommonModule,
         RentalRoutingModule,
         HttpClientModule,
         NgPipesModule,
         MapModule,
+        Daterangepicker
     ],
     providers: [
         RentalService
