@@ -40,6 +40,10 @@ class FakeDB {
             username: "testuser",
             email: "test@gmail.com",
             password: "testtest"
+        }, {
+            username: "testuser1",
+            email: "test1@gmail.com",
+            password: "testtest1"
         }]
     }
 
@@ -48,8 +52,9 @@ class FakeDB {
         await Rental.deleteMany({});
     }
 
-    pushRentalsToDb() {
+    pushDataToDb() {
         const user = new User(this.users[0]);
+        const user2 = new User(this.users[1]);
         this.rentals.forEach((rental) => {
             const newRental = new Rental(rental);
             newRental.user = user;
@@ -57,11 +62,12 @@ class FakeDB {
             newRental.save();
         });
         user.save();
+        user2.save();
     }
 
     async seedDb() {
         await this.cleanDb();
-        this.pushRentalsToDb();
+        this.pushDataToDb();
     }
 
 }
