@@ -1,18 +1,57 @@
 <div class="booking">
-    <h3 class="booking-price">${{price}} <span class="booking-per-night">per night</span></h3>
+    <h3 class="booking-price">${{rental.dailyRate}} <span class="booking-per-night">per night</span></h3>
     <hr>
-    <label>Dates</label>
-    <input type="text" class="form-control daterangepicker-input" name="daterangeInput" daterangepicker
-           [options]="options" (selected)="selectedDate($event, daterange)"
-    />
-    <div class="form-group">
-        <label for="guests">Guests</label>
-        <input type="number" class="form-control" id="guests" aria-describedby="emailHelp" placeholder="">
-    </div>
-    <button class="btn btn-danger btn-confirm btn-block">Reserve place now</button>
+    <form #bookingForm="ngForm">
+        <label>Dates</label>
+        <input type="text" class="form-control daterangepicker-input" name="daterangeInput" daterangepicker
+               [options]="options" (selected)="selectedDate($event, daterange)"
+        />
+        <div class="form-group">
+            <label for="guests">Guests</label>
+            <input [(ngModel)]="newBooking.guests"
+                   name="guests"
+                   type="number"
+                   class="form-control"
+                   id="guests"
+                   aria-describedby="emailHelp"
+                   required>
+        </div>
+        <button (click)="obenConfirmModal(content)"
+                [disabled]="bookingForm.form.invalid || !newBooking.startAt || !newBooking.endAt"
+                class="btn btn-danger btn-confirm btn-block">Reserve place now
+        </button>
+    </form>
     <hr>
     <p class="booking-note-title">People are interested into this house</p>
     <p class="booking-note-text">
         More than 500 people checked this rental in last month.
     </p>
+    <ngx-toasta></ngx-toasta>
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Buchung bestätigen
+            <p>{{newBooking.startAt | date: ['dd.MM.yyyy']}}
+                bis {{newBooking.endAt | date: ['dd.MM.yyyy']}}</p></h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <em>{{newBooking.days}}</em> Nächte /
+        <em>{{rental.dailyRate}}</em> per Night
+        <p>Anzahl Gäste: <em>{{newBooking.guests}}</em></p>
+        <p>Preis <em>{{newBooking.totalPrice}} €</em></p>
+        <p>Möchten sie die Buchung bestätigen?</p>
+    </div>
+    <div *ngIf="errors.length > 0"
+         class="alert alert-danger modal-error">
+        <p *ngFor="let error of errors">{{error.detail}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-bsw" (click)="createBooking()">Bestätigen</button>
+        <button type="button" class="btn btn-bsw" (click)="modal.dismiss('Cross clock')">Schließen</button>
+    </div>
+
+</ng-template>
