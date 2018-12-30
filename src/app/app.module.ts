@@ -6,6 +6,8 @@ import {HeaderComponent} from './common/header/header.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RentalModule} from './rental/rental.module';
 import {AuthModule} from './auth/auth.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ToastaModule} from 'ngx-toasta';
 
 @NgModule({
     declarations: [
@@ -17,6 +19,12 @@ import {AuthModule} from './auth/auth.module';
         AppRoutingModule,
         RentalModule,
         AuthModule,
+        NgbModule,
+        ToastaModule.forRoot(),
+    ],
+    exports: [
+        ToastaModule,
+        BrowserModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
