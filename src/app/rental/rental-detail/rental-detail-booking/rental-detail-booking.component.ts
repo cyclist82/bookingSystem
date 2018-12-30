@@ -7,6 +7,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BookingService} from '../../../booking/shared/booking.service';
 import {DaterangePickerComponent} from 'ng2-daterangepicker';
 import {ToastaConfig, ToastaService} from 'ngx-toasta';
+import {AuthService} from '../../../auth/shared/auth.service';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
@@ -39,7 +40,8 @@ export class RentalDetailBookingComponent implements OnInit {
                 private modalService: NgbModal,
                 private bookingService: BookingService,
                 private toastaService: ToastaService,
-                private toastaConfig: ToastaConfig) {
+                private toastaConfig: ToastaConfig,
+                public auth: AuthService) {
         this.toastaConfig.theme = 'bootstrap';
         this.toastaConfig.position = 'top-right';
     }

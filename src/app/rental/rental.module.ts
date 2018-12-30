@@ -18,6 +18,8 @@ import {RentalDetailBookingComponent} from './rental-detail/rental-detail-bookin
 import {FormsModule} from '@angular/forms';
 import {BookingService} from '../booking/shared/booking.service';
 import {ToastaModule} from 'ngx-toasta';
+import { RentalSearchComponent } from './rental-search/rental-search.component';
+import { RentalCreateComponent } from './rental-create/rental-create.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,9 @@ import {ToastaModule} from 'ngx-toasta';
         RentalComponent,
         RentalDetailComponent,
         UppercPipe,
-        RentalDetailBookingComponent],
+        RentalDetailBookingComponent,
+        RentalSearchComponent,
+        RentalCreateComponent],
     imports: [
         CommonModule,
         RentalRoutingModule,

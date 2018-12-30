@@ -16,6 +16,9 @@
   letter-spacing: 1px;
   color: $main-color;
   font-weight: 500;
+  &.active, &:hover, &:focus {
+    color: $main-color;
+  }
 }
 
 .nav-item {
@@ -31,5 +34,13 @@
     border-color: $main-color !important;
     color: $main-color !important;
     box-shadow: none;
+  }
+}
+
+.dropdown-item {
+  font-size: 14px;
+
+  &.active, &:focus {
+    background-color: $main-color;
   }
 }
