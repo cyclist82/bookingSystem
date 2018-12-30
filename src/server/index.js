@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./config/dev');
-const Rental = require('./models/rental');
 const FakeDB = require('./fake-db');
 
 const rentalRoutes = require('./routes/rentals');
