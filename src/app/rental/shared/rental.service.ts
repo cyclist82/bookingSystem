@@ -21,6 +21,14 @@ export class RentalService {
     public getAllRentals(): Observable<Rental[]> {
         return this.http.get<Rental[]>(RENTAL_BASE_URI);
     }
+
+    public getRentalsByCity(city: string): Observable<Rental[]> {
+        return this.http.get<Rental[]>(`${RENTAL_BASE_URI}?city=${city}`);
+    }
+
+    public createRental(rental: Rental): Observable<any> {
+        return this.http.post(RENTAL_BASE_URI, rental);
+    }
 }
 
 
