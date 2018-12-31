@@ -2,10 +2,10 @@
     <div class="card bwm-card">
         <img class="card-img-top" src="{{rental.image}}" alt="">
         <div class="card-block">
-            <h6 class="card-subtitle {{rental.category}}">{{rental.shared ? 'Shared' : 'Whole'}} {{rental.category}}
+            <h6 class="card-subtitle {{rental.category}}">{{rental.shared ? 'Geteilt' : 'Total'}} {{rental.category}}
                 &#183; {{rental.city}}</h6>
             <h4 class="card-title">{{rental.title}}</h4>
-            <p class="card-text">${{rental.dailyRate}} per Night &#183; Free Cancelation</p>
+            <p class="card-text">{{rental.dailyRate}} € pro Nacht &#183; Kostenlos stornieren</p>
         </div>
     </div>
 </a>

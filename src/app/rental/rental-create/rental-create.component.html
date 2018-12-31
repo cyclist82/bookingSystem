@@ -42,7 +42,7 @@
                                 class="form-control"
                                 id="category"
                                 required>
-                            <option *ngFor="let category of rentalCategories">{{category}}</option>
+                            <option *ngFor="let category of rentalCategories">{{category | titlecase}}</option>
                         </select>
                     </div>
 

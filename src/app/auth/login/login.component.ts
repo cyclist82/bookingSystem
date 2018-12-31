@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
-    private errors: any[] = [];
+    errors: any[] = [];
     notifyMessage: string = '';
 
     constructor(private formBuilder: FormBuilder, private authService: AuthService,

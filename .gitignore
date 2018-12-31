@@ -43,7 +43,8 @@ testem.log
 Thumbs.db
 
 #Server Config
-src/server/config/dev.js
+server/config/dev.js
+server/config/prod.js
 
 google Maps API Key
 src/app/common/map/config/dev.ts
