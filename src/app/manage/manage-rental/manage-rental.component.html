@@ -1,0 +1,44 @@
+<section id="userRentals">
+    <h1 class="page-title">My Rentals</h1>
+    <div class="row">
+        <ng-container *ngIf="rentals && rentals.length > 0">
+            <div *ngFor="let rental of rentals; let i = index" class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title">{{rental.title | titlecase}} - {{rental.city | titlecase}}</h4>
+                        <a class="btn btn-ghost m-2" routerLink="/rentals/{{rental._id}}">Details ansehen</a>
+                        <span *ngIf="rental.bookings.length > 0">
+                          <bsw-manage-rental-booking [bookings]="rental.bookings"></bsw-manage-rental-booking>
+                        </span>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p>Erstellt: {{rental.createdAt | formatDate}}</p>
+                        <button (click)="rentalDeleteIndex=i"
+                                *ngIf="rentalDeleteIndex !== i"
+                                type="button"
+                                class="btn btn-bsw btn-delete">
+                            Löschen
+                        </button>
+                        <div *ngIf="rentalDeleteIndex===i">
+                            <p class="confirm-message">Löschen bestätigen?</p>
+                            <button (click)="deleteRental(rental._id)"
+                                    class="btn btn-success mx-1">Ja
+                            </button>
+                            <button (click)="rentalDeleteIndex = undefined"
+                                    class="btn btn-danger">Nein
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <div *ngIf="rentals && rentals.length===0" class="col-md-8">
+            <div class="alert alert-warning">
+                Sie haben noch keine Wohnung eingestellt. Wenn sie eine Wohnung erstellen möchten, folgen sie bitte dem
+                Link.
+                <a class="btn btn-bsw" routerLink="/rentals/new">Wohnung erstellen</a>
+            </div>
+        </div>
+        <ngx-toasta></ngx-toasta>
+    </div>
+</section>

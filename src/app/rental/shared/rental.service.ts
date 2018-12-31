@@ -14,6 +14,10 @@ export class RentalService {
     constructor(private http: HttpClient) {
     }
 
+    public getRentalsByUser(): Observable<Rental[]> {
+        return this.http.get<Rental[]>(RENTAL_BASE_URI + '/manage');
+    }
+
     public getRentalById(rentalId: string): Observable<Rental> {
         return this.http.get<Rental>(RENTAL_BASE_URI + '/' + rentalId);
     }
@@ -28,6 +32,10 @@ export class RentalService {
 
     public createRental(rental: Rental): Observable<any> {
         return this.http.post(RENTAL_BASE_URI, rental);
+    }
+
+    public deleteRentalById(rentalId: string): Observable<any> {
+        return this.http.delete(RENTAL_BASE_URI + '/' + rentalId);
     }
 }
 

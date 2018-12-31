@@ -8,6 +8,7 @@ import {RentalModule} from './rental/rental.module';
 import {AuthModule} from './auth/auth.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ToastaModule} from 'ngx-toasta';
+import {ManageModule} from './manage/manage.module';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import {ToastaModule} from 'ngx-toasta';
         RentalModule,
         AuthModule,
         NgbModule,
+        ManageModule,
         ToastaModule.forRoot(),
     ],
     exports: [

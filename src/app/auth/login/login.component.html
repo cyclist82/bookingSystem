@@ -2,13 +2,13 @@
     <div class="bwm-form">
         <div class="row">
             <div class="col-md-5">
-                <h1 class="page-title">Login</h1>
+                <h1 class="page-title">Einloggen</h1>
                 <div *ngIf="notifyMessage" class="alert alert-success">
                     {{notifyMessage}}
                 </div>
                 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">E-Mail</label>
                         <input type="email"
                                class="form-control"
                                id="email" formControlName="email">
@@ -23,12 +23,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Passwort</label>
                         <input type="password"
                                class="form-control"
                                id="password" formControlName="password">
                     </div>
-                    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-danger">Submit</button>
+                    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-danger">Einloggen</button>
                 </form>
                 <div *ngIf="errors.length > 0" class="alert alert-danger">
                     <p *ngFor="let error of errors">{{error.detail}}</p>
@@ -36,8 +36,8 @@
             </div>
             <div class="col-md-6 ml-auto">
                 <div class="image-container">
-                    <h2 class="catchphrase">Hundreds of awesome places in reach of few clicks.</h2>
-                    <img src="assets/images/login-image.jpg" alt="">
+                    <h2 class="catchphrase">Hunderte beeindruckende Wohnung nur ein paar Klicks entfernt.</h2>
+                    <img src="assets/images/login-image.jpg" alt="LoginPicture">
                 </div>
             </div>
         </div>
