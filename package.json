@@ -11,7 +11,7 @@
     "start": "npm run start --prefix server",
     "start-dev": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build --prod",
-    "heroku-postbuild": "npm run build --target=production -e ${NODE_ENV:-production} --aot",
+    "heroku-postbuild": "npm run build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -48,6 +48,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^7.1.1",
     "@angular-devkit/build-angular": "~0.11.0",
     "@angular/cli": "~7.1.2",
     "@angular/compiler-cli": "~7.1.0",
