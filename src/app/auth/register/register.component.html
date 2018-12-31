@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">E-Mail</label>
                         <input [(ngModel)]="formData.email"
                                #email="ngModel"
                                name="email" type="email"
@@ -49,7 +49,7 @@
                                required>
                     </div>
                     <button [disabled]="registerForm.invalid" (click)="register()" type="submit"
-                            class="btn btn-danger">Submit
+                            class="btn btn-danger">Abschicken
                     </button>
                 </form>
                 <div *ngIf="errors.length > 0" class="alert alert-danger">
@@ -58,8 +58,9 @@
             </div>
             <div class="col-md-6 ml-auto">
                 <div class="image-container">
-                    <h2 class="catchphrase">As our member you have access to most awesome places in the world.</h2>
-                    <img src="assets/images/register-image.jpg" alt="">
+                    <h2 class="catchphrase">Als Mitglied haben sie Zugriff auf die beeindruckendsten Wohnungen der
+                        Welt.</h2>
+                    <img src="assets/images/register-image.jpg" alt="Register Picture">
                 </div>
             </div>
         </div>

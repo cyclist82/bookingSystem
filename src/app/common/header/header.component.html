@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/rentals">Buche mich</a>
+    <a class="navbar-brand" routerLink="/rentals">BucheMitMir <img src="favicon.ico" alt="Angular Icon"></a>
     <div class="form-inline">
         <input #citySearch
                (keyup.enter)="search(citySearch.value)"
                class="form-control mr-sm-2 bsw-search"
-               type="search" placeholder="Search"
+               type="search" placeholder="Ort Suchen"
                aria-label="Search">
         <button (click)="search(citySearch.value)"
                 class="btn btn-outline-success my-2 my-sm-0 btn-bsw-search"
-                type="button">Search
+                type="button">suchen
         </button>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -19,10 +19,10 @@
         <ul class="navbar-nav ml-auto">
             <ng-container *ngIf="!authService.isAuthenticated()">
                 <li routerLinkActive="active" class="nav-item">
-                    <a class="nav-link" routerLink="/login">Login</a>
+                    <a class="nav-link" routerLink="/login">Einloggen</a>
                 </li>
                 <li routerLinkActive="active" class="nav-item">
-                    <a class="nav-link" routerLink="/register">Register</a>
+                    <a class="nav-link" routerLink="/register">Registrieren</a>
                 </li>
             </ng-container>
             <ng-container *ngIf="authService.isAuthenticated()">
@@ -36,6 +36,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a routerLink="/rentals/new" routerLinkActive="active" class="dropdown-item">Neue Wohnung</a>
+                        <a routerLink="/manage/rentals" routerLinkActive="active" class="dropdown-item">Wohnungen
+                            verwalten</a>
+                        <a routerLink="/manage/bookings" routerLinkActive="active" class="dropdown-item">Buchungen
+                            verwalten</a>
                     </div>
                 </div>
                 <li class="nav-item clickable">

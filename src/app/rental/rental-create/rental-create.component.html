@@ -2,10 +2,10 @@
     <div class="bwm-form">
         <div class="row">
             <div class="col-md-5">
-                <h1 class="page-title">Create Rental</h1>
+                <h1 class="page-title">Wohnung erzeugen</h1>
                 <form #newRentalForm="ngForm">
                     <div class="form-group">
-                        <label for="title">Title</label>
+                        <label for="title">Titel</label>
                         <input [(ngModel)]="newRental.title"
                                name="title"
                                type="text"
@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="city">City</label>
+                        <label for="city">Ort</label>
                         <input [(ngModel)]="newRental.city"
                                name="city"
                                type="text"
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="street">Street</label>
+                        <label for="street">Straße</label>
                         <input [(ngModel)]="newRental.street"
                                name="street"
                                type="text"
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="category">Category</label>
+                        <label for="category">Kategorie</label>
 
                         <select [(ngModel)]="newRental.category"
                                 name="category"
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="image">Image</label>
+                        <label for="image">Bild</label>
                         <input type="file"
                                name="image"
                                class="form-control"
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="bedrooms">Bedrooms</label>
+                        <label for="bedrooms">Schlafzimmer</label>
                         <input [(ngModel)]="newRental.bedrooms"
                                name="bedrooms"
                                type="number"
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="description">Beschreibung</label>
                         <textarea [(ngModel)]="newRental.description"
                                   name="description"
                                   rows="5"
@@ -79,10 +79,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="dailyRate">Daily Rate</label>
+                        <label for="dailyRate">Tagesmiete</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">$</div>
+                                <div class="input-group-text">€</div>
                             </div>
                             <input [(ngModel)]="newRental.dailyRate"
                                    name="dailyRate"
@@ -93,19 +93,18 @@
                         </div>
                     </div>
 
-                    <div class="form-check">
+                    <div class="form-check mb-2">
                         <input [(ngModel)]="newRental.shared"
                                name="shared"
                                type="checkbox"
                                class="form-check-input"
                                id="shared">
-                        <label class="form-check-label" for="shared">Shared</label>
-
+                        <label class="form-check-label" for="shared">Teilbar</label>
                     </div>
                     <button (click)="createRental()"
                             [disabled]="newRentalForm.invalid"
                             type="button"
-                            class="btn btn-bsw">Submit
+                            class="btn btn-bsw">Abschicken
                     </button>
                 </form>
                 <div *ngIf="errors.length > 0" class="alert alert-danger">
@@ -114,8 +113,8 @@
             </div>
             <div class="col-md-6 ml-auto">
                 <div class="image-container">
-                    <h2 class="catchphrase">Hundreds of awesome places in reach of few clicks.</h2>
-                    <img src="assets/images/create-rental.jpg" alt="">
+                    <h2 class="catchphrase">Hunderte beeindurckende Wohnungen nur ein paar Klicks weg.</h2>
+                    <img src="assets/images/create-rental.jpg" alt="Create Rental Picture">
                 </div>
             </div>
         </div>

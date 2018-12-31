@@ -1,5 +1,5 @@
 <div class="booking">
-    <h3 class="booking-price">${{rental.dailyRate}} <span class="booking-per-night">per night</span></h3>
+    <h3 class="booking-price">{{rental.dailyRate}} € <span class="booking-per-night">pro Nacht</span></h3>
     <hr>
     <ng-container *ngIf="auth.isAuthenticated()">
         <form #bookingForm="ngForm">
@@ -29,7 +29,7 @@
     <hr>
     <p class="booking-note-title">People are interested into this house</p>
     <p class="booking-note-text">
-        More than 500 people checked this rental in last month.
+        Mehr als 500 Mitglieder interessierten sich im letzten Monat für diese Wohnung.
     </p>
     <ngx-toasta></ngx-toasta>
 </div>
