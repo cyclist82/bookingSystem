@@ -44,7 +44,6 @@ Thumbs.db
 
 #Server Config
 server/config/dev.js
-server/config/prod.js
 
 google Maps API Key
 src/app/common/map/config/dev.ts
