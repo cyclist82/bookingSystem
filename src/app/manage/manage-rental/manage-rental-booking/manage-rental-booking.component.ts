@@ -11,7 +11,7 @@ export class ManageRentalBookingComponent implements OnInit {
 
     @Input() bookings: Booking[];
 
-    constructor(private modalService: NgbModal) {
+    constructor(public modalService: NgbModal) {
     }
 
     ngOnInit() {

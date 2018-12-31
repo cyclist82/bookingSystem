@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import {MapComponent} from './map.component';
 import {CamelizePipe} from 'ngx-pipes';
 import {MapService} from './map.service';
-import {GoogleMapsAPI} from './config/dev';
+import {GOOGLE_API_KEY} from '../../../../server/config';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import {GoogleMapsAPI} from './config/dev';
     imports: [
         CommonModule,
         AgmCoreModule.forRoot({
-            apiKey: new GoogleMapsAPI().getAPIKey()
+            apiKey: GOOGLE_API_KEY
         }),
     ],
     exports: [
