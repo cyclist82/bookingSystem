@@ -43,9 +43,6 @@ testem.log
 Thumbs.db
 
 #Server Config
-server/config/dev.js
+dev.js
 
-google Maps API Key
-src/app/common/map/config/dev.ts
-src/server/.vscode
 
