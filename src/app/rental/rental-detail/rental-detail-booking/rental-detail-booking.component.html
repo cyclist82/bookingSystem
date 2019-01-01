@@ -3,12 +3,12 @@
     <hr>
     <ng-container *ngIf="auth.isAuthenticated()">
         <form #bookingForm="ngForm">
-            <label>Dates</label>
+            <label>Zeitraum</label>
             <input type="text" class="form-control daterangepicker-input" name="daterangeInput" daterangepicker
                    [options]="options" (selected)="selectedDate($event, daterange)"
             />
             <div class="form-group">
-                <label for="guests">Guests</label>
+                <label for="guests">Gäste</label>
                 <input [(ngModel)]="newBooking.guests"
                        name="guests"
                        type="number"
@@ -19,7 +19,7 @@
             </div>
             <button (click)="obenConfirmModal(content)"
                     [disabled]="bookingForm.form.invalid || !newBooking.startAt || !newBooking.endAt"
-                    class="btn btn-danger btn-confirm btn-block">Reserve place now
+                    class="btn btn-danger btn-confirm btn-block">Jetzt reservieren
             </button>
         </form>
     </ng-container>
@@ -27,7 +27,7 @@
         <button class="btn btn-bsw" routerLink="/login">Jetzt einloggen und diese Wohnung mieten</button>
     </div>
     <hr>
-    <p class="booking-note-title">People are interested into this house</p>
+    <p class="booking-note-title">Dieses Objekt ist sehr begehrt</p>
     <p class="booking-note-text">
         Mehr als 500 Mitglieder interessierten sich im letzten Monat für diese Wohnung.
     </p>

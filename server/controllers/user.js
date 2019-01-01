@@ -4,117 +4,119 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 exports.auth = function (req, res) {
-    const {email, password} = req.body;
-    if (!password || !email) {
-        return res.status(422).send({
-            errors: [{
-                title: 'Eingabe fehlerhaft!',
-                detail: 'Bitte EMail und Passwort angeben!'
-            }]
-        })
-    }
-    User.findOne({email}, function (err, user) {
-        if (err) {
-            return res.status(422).send({errors: normalizeErrors(err.errors)});
-        }
-        if (!user) {
-            return res.status(422).send({
-                errors: [{
-                    title: 'Benutzerfehler!',
-                    detail: 'Benutzer nicht vorhanden!'
-                }]
-            })
-        }
-
-        if (user.hasSamePassword(password)) {
-            const token = jwt.sign({
-                userId: user.id,
-                username: user.username,
-            }, config.SECRET, {expiresIn: '1h'});
-            return res.json(token);
-        } else {
-            return res.status(422).send({
-                errors: [{
-                    title: 'Passwortfehler!',
-                    detail: 'EMail oder Passwort nicht korrekt!'
-                }]
-            })
-        }
+  const {email, password} = req.body;
+  if (!password || !email) {
+    return res.status(422).send({
+      errors: [{
+        title: 'Eingabe fehlerhaft!',
+        detail: 'Bitte EMail und Passwort angeben!'
+      }]
     })
+  }
+  User.findOne({email}, function (err, user) {
+    if (err) {
+      return res.status(422).send({errors: normalizeErrors(err.errors)});
+    }
+    if (!user) {
+      return res.status(422).send({
+        errors: [{
+          title: 'Benutzerfehler!',
+          detail: 'Benutzer nicht vorhanden!'
+        }]
+      })
+    }
+
+    if (user.hasSamePassword(password)) {
+      const token = jwt.sign({
+        userId: user.id,
+        username: user.username,
+      }, config.SECRET, {expiresIn: '1h'});
+      return res.json(token);
+    } else {
+      return res.status(422).send({
+        errors: [{
+          title: 'Passwortfehler!',
+          detail: 'EMail oder Passwort nicht korrekt!'
+        }]
+      })
+    }
+  })
 };
 exports.register = function (req, res) {
-    const {username, email, password, passwordConfirmation} = req.body;
-    if (!password || !email) {
-        return res.status(422).send({
-            errors: [{
-                title: 'Eingabe fehlerhaft!',
-                detail: 'Bitte EMail und Passwort angeben!'
-            }]
-        })
-    }
-    if (password !== passwordConfirmation) {
-        return res.status(422).send({
-            errors: [{
-                title: 'Passwortfehler!',
-                detail: 'Passwörter stimmen nicht überein!'
-            }]
-        });
-    }
-    User.findOne({email}, function (err, existingUser) {
-        if (err) {
-            return res.status(422).send({errors: normalizeErrors(err.errors)});
-        }
-        if (existingUser) {
-            return res.status(422).send({
-                errors: [{
-                    title: 'EMail Fehler!',
-                    detail: 'EMail Adresse bereits in Benutzung'
-                }]
-            })
-        }
-        const user = new User({
-            username,
-            email,
-            password
-        });
-        user.save(function (err) {
-            if (err) {
-                return res.status(422).send({errors: normalizeErrors(err.errors)});
-            }
-            return res.json({'registered': true})
-        });
+  const {username, email, password, passwordConfirmation} = req.body;
+  if (!password || !email) {
+    return res.status(422).send({
+      errors: [{
+        title: 'Eingabe fehlerhaft!',
+        detail: 'Bitte EMail und Passwort angeben!'
+      }]
+    })
+  }
+  if (password !== passwordConfirmation) {
+    return res.status(422).send({
+      errors: [{
+        title: 'Passwortfehler!',
+        detail: 'Passwörter stimmen nicht überein!'
+      }]
     });
+  }
+  User.findOne({email}, function (err, existingUser) {
+    if (err) {
+      return res.status(422).send({errors: normalizeErrors(err.errors)});
+    }
+    if (existingUser) {
+      return res.status(422).send({
+        errors: [{
+          title: 'EMail Fehler!',
+          detail: 'EMail Adresse bereits in Benutzung'
+        }]
+      });
+    }
+    const user = new User({
+      username,
+      email,
+      password
+    });
+    console.log(user);
+    user.save(function (err) {
+      if (err) {
+        console.log(err);
+        return res.status(422).send({errors: normalizeErrors(err.errors)});
+      }
+      return res.json({'registered': true});
+    });
+  });
 };
 
 exports.authMiddleWare = function (req, res, next) {
-    const token = req.headers.authorization;
-    if (token) {
-        const user = parseToken(token);
-        User.findById(user.userId, function (err, user) {
-            if (err) {
-                return res.status(422).send({errors: normalizeErrors(err.errors)});
-            }
-            if (user) {
-                res.locals.user = user;
-                next();
-            } else {
-                return notAuthorized(res);
-            }
-        })
-    } else {
+  const token = req.headers.authorization;
+  if (token) {
+    const user = parseToken(token);
+    User.findById(user.userId, function (err, user) {
+      if (err) {
+        return res.status(422).send({errors: normalizeErrors(err.errors)});
+      }
+      if (user) {
+        res.locals.user = user;
+        next();
+      } else {
         return notAuthorized(res);
-    }
+      }
+    })
+  } else {
+    return notAuthorized(res);
+  }
 }
 
 function parseToken(token) {
-    return jwt.verify(token.split(' ')[1], config.SECRET);
+  return jwt.verify(token.split(' ')[1], config.SECRET);
 }
 
 function notAuthorized(res) {
-    return res.status(401).send({
-        errors: [{
-            title: 'Nicht berechtigt!',
-            detail: 'Sie müssen sich zuerst einloggen'
-        }]
-    })
+  return res.status(401).send({
+    errors: [{
+      title: 'Nicht berechtigt!',
+      detail: 'Sie müssen sich zuerst einloggen'
+    }]
+  })
 }
